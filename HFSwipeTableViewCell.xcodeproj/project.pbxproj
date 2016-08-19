@@ -15,6 +15,8 @@
 		D8B44A711D66852D00F69B40 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8B44A6F1D66852D00F69B40 /* MainViewController.swift */; };
 		D8B44A721D66852D00F69B40 /* MainViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D8B44A701D66852D00F69B40 /* MainViewController.xib */; };
 		D8B44A761D66862400F69B40 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = D8B44A751D66862400F69B40 /* LaunchScreen.xib */; };
+		D8B44A791D67BC9700F69B40 /* HFSwipeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8B44A771D67BC9700F69B40 /* HFSwipeTableViewCell.swift */; };
+		D8B44A7A1D67BC9700F69B40 /* HFSwipeTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D8B44A781D67BC9700F69B40 /* HFSwipeTableViewCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +51,8 @@
 		D8B44A6F1D66852D00F69B40 /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		D8B44A701D66852D00F69B40 /* MainViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainViewController.xib; sourceTree = "<group>"; };
 		D8B44A751D66862400F69B40 /* LaunchScreen.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LaunchScreen.xib; sourceTree = "<group>"; };
+		D8B44A771D67BC9700F69B40 /* HFSwipeTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HFSwipeTableViewCell.swift; sourceTree = "<group>"; };
+		D8B44A781D67BC9700F69B40 /* HFSwipeTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HFSwipeTableViewCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -102,6 +106,8 @@
 				D849AA5F1D651D7E00448ADD /* AppDelegate.swift */,
 				D8B44A6F1D66852D00F69B40 /* MainViewController.swift */,
 				D8B44A701D66852D00F69B40 /* MainViewController.xib */,
+				D8B44A771D67BC9700F69B40 /* HFSwipeTableViewCell.swift */,
+				D8B44A781D67BC9700F69B40 /* HFSwipeTableViewCell.xib */,
 				D849AA661D651D7E00448ADD /* HFSwipeTableViewCell.xcdatamodeld */,
 				D849AA691D651D7E00448ADD /* Assets.xcassets */,
 				D8B44A751D66862400F69B40 /* LaunchScreen.xib */,
@@ -234,6 +240,7 @@
 			files = (
 				D849AA6A1D651D7E00448ADD /* Assets.xcassets in Resources */,
 				D8B44A761D66862400F69B40 /* LaunchScreen.xib in Resources */,
+				D8B44A7A1D67BC9700F69B40 /* HFSwipeTableViewCell.xib in Resources */,
 				D8B44A721D66852D00F69B40 /* MainViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -261,6 +268,7 @@
 			files = (
 				D8B44A711D66852D00F69B40 /* MainViewController.swift in Sources */,
 				D849AA681D651D7E00448ADD /* HFSwipeTableViewCell.xcdatamodeld in Sources */,
+				D8B44A791D67BC9700F69B40 /* HFSwipeTableViewCell.swift in Sources */,
 				D849AA601D651D7E00448ADD /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
