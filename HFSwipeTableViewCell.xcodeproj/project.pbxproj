@@ -8,13 +8,13 @@
 
 /* Begin PBXBuildFile section */
 		D849AA601D651D7E00448ADD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D849AA5F1D651D7E00448ADD /* AppDelegate.swift */; };
-		D849AA621D651D7E00448ADD /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D849AA611D651D7E00448ADD /* ViewController.swift */; };
-		D849AA651D651D7E00448ADD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D849AA631D651D7E00448ADD /* Main.storyboard */; };
 		D849AA681D651D7E00448ADD /* HFSwipeTableViewCell.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D849AA661D651D7E00448ADD /* HFSwipeTableViewCell.xcdatamodeld */; };
 		D849AA6A1D651D7E00448ADD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D849AA691D651D7E00448ADD /* Assets.xcassets */; };
-		D849AA6D1D651D7E00448ADD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D849AA6B1D651D7E00448ADD /* LaunchScreen.storyboard */; };
 		D849AA781D651D7E00448ADD /* HFSwipeTableViewCellTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D849AA771D651D7E00448ADD /* HFSwipeTableViewCellTests.swift */; };
 		D849AA831D651D7E00448ADD /* HFSwipeTableViewCellUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D849AA821D651D7E00448ADD /* HFSwipeTableViewCellUITests.swift */; };
+		D8B44A711D66852D00F69B40 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8B44A6F1D66852D00F69B40 /* MainViewController.swift */; };
+		D8B44A721D66852D00F69B40 /* MainViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D8B44A701D66852D00F69B40 /* MainViewController.xib */; };
+		D8B44A761D66862400F69B40 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = D8B44A751D66862400F69B40 /* LaunchScreen.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -37,11 +37,8 @@
 /* Begin PBXFileReference section */
 		D849AA5C1D651D7E00448ADD /* HFSwipeTableViewCell.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HFSwipeTableViewCell.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D849AA5F1D651D7E00448ADD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		D849AA611D651D7E00448ADD /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		D849AA641D651D7E00448ADD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		D849AA671D651D7E00448ADD /* HFSwipeTableViewCell.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = HFSwipeTableViewCell.xcdatamodel; sourceTree = "<group>"; };
 		D849AA691D651D7E00448ADD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		D849AA6C1D651D7E00448ADD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D849AA6E1D651D7E00448ADD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D849AA731D651D7E00448ADD /* HFSwipeTableViewCellTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HFSwipeTableViewCellTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D849AA771D651D7E00448ADD /* HFSwipeTableViewCellTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HFSwipeTableViewCellTests.swift; sourceTree = "<group>"; };
@@ -49,6 +46,9 @@
 		D849AA7E1D651D7E00448ADD /* HFSwipeTableViewCellUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HFSwipeTableViewCellUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D849AA821D651D7E00448ADD /* HFSwipeTableViewCellUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HFSwipeTableViewCellUITests.swift; sourceTree = "<group>"; };
 		D849AA841D651D7E00448ADD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D8B44A6F1D66852D00F69B40 /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		D8B44A701D66852D00F69B40 /* MainViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainViewController.xib; sourceTree = "<group>"; };
+		D8B44A751D66862400F69B40 /* LaunchScreen.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LaunchScreen.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -100,12 +100,12 @@
 			isa = PBXGroup;
 			children = (
 				D849AA5F1D651D7E00448ADD /* AppDelegate.swift */,
-				D849AA611D651D7E00448ADD /* ViewController.swift */,
-				D849AA631D651D7E00448ADD /* Main.storyboard */,
-				D849AA691D651D7E00448ADD /* Assets.xcassets */,
-				D849AA6B1D651D7E00448ADD /* LaunchScreen.storyboard */,
-				D849AA6E1D651D7E00448ADD /* Info.plist */,
+				D8B44A6F1D66852D00F69B40 /* MainViewController.swift */,
+				D8B44A701D66852D00F69B40 /* MainViewController.xib */,
 				D849AA661D651D7E00448ADD /* HFSwipeTableViewCell.xcdatamodeld */,
+				D849AA691D651D7E00448ADD /* Assets.xcassets */,
+				D8B44A751D66862400F69B40 /* LaunchScreen.xib */,
+				D849AA6E1D651D7E00448ADD /* Info.plist */,
 			);
 			path = HFSwipeTableViewCell;
 			sourceTree = "<group>";
@@ -232,9 +232,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D849AA6D1D651D7E00448ADD /* LaunchScreen.storyboard in Resources */,
 				D849AA6A1D651D7E00448ADD /* Assets.xcassets in Resources */,
-				D849AA651D651D7E00448ADD /* Main.storyboard in Resources */,
+				D8B44A761D66862400F69B40 /* LaunchScreen.xib in Resources */,
+				D8B44A721D66852D00F69B40 /* MainViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -259,7 +259,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D849AA621D651D7E00448ADD /* ViewController.swift in Sources */,
+				D8B44A711D66852D00F69B40 /* MainViewController.swift in Sources */,
 				D849AA681D651D7E00448ADD /* HFSwipeTableViewCell.xcdatamodeld in Sources */,
 				D849AA601D651D7E00448ADD /* AppDelegate.swift in Sources */,
 			);
@@ -295,25 +295,6 @@
 			targetProxy = D849AA7F1D651D7E00448ADD /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
-
-/* Begin PBXVariantGroup section */
-		D849AA631D651D7E00448ADD /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				D849AA641D651D7E00448ADD /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-		D849AA6B1D651D7E00448ADD /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				D849AA6C1D651D7E00448ADD /* Base */,
-			);
-			name = LaunchScreen.storyboard;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		D849AA851D651D7E00448ADD /* Debug */ = {
@@ -403,7 +384,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "Brand Assets";
 				INFOPLIST_FILE = HFSwipeTableViewCell/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.HenryFanDi.HFSwipeTableViewCell;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -414,7 +397,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "Brand Assets";
 				INFOPLIST_FILE = HFSwipeTableViewCell/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.HenryFanDi.HFSwipeTableViewCell;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -486,6 +471,7 @@
 				D849AA891D651D7E00448ADD /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		D849AA8A1D651D7E00448ADD /* Build configuration list for PBXNativeTarget "HFSwipeTableViewCellTests" */ = {
 			isa = XCConfigurationList;
@@ -494,6 +480,7 @@
 				D849AA8C1D651D7E00448ADD /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		D849AA8D1D651D7E00448ADD /* Build configuration list for PBXNativeTarget "HFSwipeTableViewCellUITests" */ = {
 			isa = XCConfigurationList;
@@ -502,6 +489,7 @@
 				D849AA8F1D651D7E00448ADD /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 
