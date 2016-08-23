@@ -8,7 +8,10 @@
 
 import UIKit
 
-class HFSwipeTableViewCell: UITableViewCell {
+class HFSwipeTableViewCell: UITableViewCell, UIScrollViewDelegate {
+  
+  private let cellScrollView = UIScrollView()
+  private let cellContentView = UIView()
   
   // MARK: Lifecycle
   
@@ -24,6 +27,25 @@ class HFSwipeTableViewCell: UITableViewCell {
   // MARK: Private
   
   private func setupSwipeTableViewCell() {
+    setupCellScrollView()
+    setupCellContentView()
+  }
+  
+  private func setupCellScrollView() {
+    cellScrollView.backgroundColor = .clearColor()
+    cellScrollView.translatesAutoresizingMaskIntoConstraints = false
+    cellScrollView.delegate = self
+  }
+  
+  private func setupCellContentView() {
+    cellContentView.backgroundColor = .clearColor()
+    cellScrollView.addSubview(cellContentView)
+    
+    // Add the cell scroll view to the cell
+    insertSubview(cellScrollView, atIndex: 0)
+    for (_, subView) in subviews.enumerate() {
+      cellContentView.addSubview(subView)
+    }
   }
   
 }
