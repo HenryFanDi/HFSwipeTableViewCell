@@ -13,6 +13,8 @@ class HFSwipeTableViewCell: UITableViewCell, UIScrollViewDelegate {
   private let cellScrollView = UIScrollView()
   private let cellContentView = UIView()
   
+  private let tapGestureRecognizer = UITapGestureRecognizer()
+  
   // MARK: Lifecycle
   
   override func awakeFromNib() {
@@ -29,6 +31,9 @@ class HFSwipeTableViewCell: UITableViewCell, UIScrollViewDelegate {
   private func setupSwipeTableViewCell() {
     setupCellScrollView()
     setupCellContentView()
+    
+    setupTapGestureRecognizer()
+    setupCellViewsConstraints()
   }
   
   private func setupCellScrollView() {
@@ -46,6 +51,26 @@ class HFSwipeTableViewCell: UITableViewCell, UIScrollViewDelegate {
     for (_, subView) in subviews.enumerate() {
       cellContentView.addSubview(subView)
     }
+  }
+  
+  private func setupTapGestureRecognizer() {
+    tapGestureRecognizer.addTarget(self, action: #selector(HFSwipeTableViewCell.selectOnTap(_:)))
+    tapGestureRecognizer.delegate = self
+    cellScrollView.addGestureRecognizer(tapGestureRecognizer)
+  }
+  
+  private func setupCellViewsConstraints() {
+    let metrics = ["padding" : 0]
+    let views = ["cellScrollView" : cellScrollView]
+    let horizontalConstraints = NSLayoutConstraint.constraintsWithVisualFormat("H:|-padding-[cellScrollView]-padding-|", options: [.AlignAllBaseline], metrics: metrics, views: views)
+    let verticalConstraints = NSLayoutConstraint.constraintsWithVisualFormat("V:|-padding-[cellScrollView]-padding-|", options: [.AlignAllBaseline], metrics: metrics, views: views)
+    addConstraints(horizontalConstraints)
+    addConstraints(verticalConstraints)
+  }
+  
+  // MARK: UITapGestureRecognizer
+  
+  func selectOnTap(tapGestureRecognizer: UITapGestureRecognizer) {
   }
   
 }
