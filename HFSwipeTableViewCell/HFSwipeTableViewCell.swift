@@ -15,6 +15,9 @@ class HFSwipeTableViewCell: UITableViewCell, UIScrollViewDelegate {
   
   private let tapGestureRecognizer = UITapGestureRecognizer()
   
+  private let rightView = UIView()
+  private var rightViewConstraint = NSLayoutConstraint()
+  
   // MARK: Lifecycle
   
   override func awakeFromNib() {
@@ -34,6 +37,8 @@ class HFSwipeTableViewCell: UITableViewCell, UIScrollViewDelegate {
     
     setupTapGestureRecognizer()
     setupCellViewsConstraints()
+    
+    setupSwipeView()
   }
   
   private func setupCellScrollView() {
@@ -66,6 +71,19 @@ class HFSwipeTableViewCell: UITableViewCell, UIScrollViewDelegate {
     let verticalConstraints = NSLayoutConstraint.constraintsWithVisualFormat("V:|-padding-[cellScrollView]-padding-|", options: [.AlignAllBaseline], metrics: metrics, views: views)
     addConstraints(horizontalConstraints)
     addConstraints(verticalConstraints)
+  }
+  
+  private func setupSwipeView() {
+    rightView.frame = self.bounds
+    rightView.backgroundColor = .clearColor()
+    
+    rightViewConstraint = NSLayoutConstraint.init(item: rightView,
+                                                  attribute: .Left,
+                                                  relatedBy: .Equal,
+                                                  toItem: self,
+                                                  attribute: .Right,
+                                                  multiplier: 1.0,
+                                                  constant: 0.0)
   }
   
   // MARK: UITapGestureRecognizer
