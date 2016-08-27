@@ -86,6 +86,48 @@ class HFSwipeTableViewCell: UITableViewCell, UIScrollViewDelegate {
                                                   constant: 0.0)
   }
   
+  private func setupSwipeViewConstraints() {
+    let swipeViews = [rightView]
+    let swipeViewConstraints = [rightViewConstraint]
+    let swipeAttributes = [NSLayoutAttribute.Right]
+    
+    let swipeCounts = 1
+    for index in 0...swipeCounts {
+      let swipeView = swipeViews[index]
+      swipeView.translatesAutoresizingMaskIntoConstraints = false
+      swipeView.clipsToBounds = true
+      cellScrollView.addSubview(swipeView)
+      
+      let swipeViewConstraint = swipeViewConstraints[index]
+      swipeViewConstraint.priority = UILayoutPriorityDefaultHigh
+      
+      let swipeAttribute = swipeAttributes[index]
+      addConstraints([
+        NSLayoutConstraint.init(item: swipeView,
+          attribute: .Top,
+          relatedBy: .Equal,
+          toItem: self,
+          attribute: .Top,
+          multiplier: 1.0,
+          constant: 0.0),
+        NSLayoutConstraint.init(item: swipeView,
+          attribute: .Bottom,
+          relatedBy: .Equal,
+          toItem: self,
+          attribute: .Bottom,
+          multiplier: 1.0,
+          constant: 0.0),
+        NSLayoutConstraint.init(item: swipeView,
+          attribute: swipeAttribute,
+          relatedBy: .Equal,
+          toItem: self,
+          attribute: swipeAttribute,
+          multiplier: 1.0,
+          constant: 0.0)
+        ])
+    }
+  }
+  
   // MARK: UITapGestureRecognizer
   
   func selectOnTap(tapGestureRecognizer: UITapGestureRecognizer) {
