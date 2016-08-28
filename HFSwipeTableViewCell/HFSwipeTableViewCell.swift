@@ -10,6 +10,12 @@ import UIKit
 
 class HFSwipeTableViewCell: UITableViewCell, UIScrollViewDelegate {
   
+  enum HFSwipeStatusType {
+    case HFSwipeStatusCenter
+    case HFSwipeStatusLeft
+    case HFSwipeStatusRight
+  }
+  
   private let cellScrollView = UIScrollView()
   private let cellContentView = UIView()
   
@@ -25,6 +31,10 @@ class HFSwipeTableViewCell: UITableViewCell, UIScrollViewDelegate {
   override func awakeFromNib() {
     super.awakeFromNib()
     setupSwipeTableViewCell()
+  }
+  
+  override func layoutSubviews() {
+    super.layoutSubviews()
   }
   
   override func setSelected(selected: Bool, animated: Bool) {
@@ -57,9 +67,10 @@ class HFSwipeTableViewCell: UITableViewCell, UIScrollViewDelegate {
     cellScrollView.addSubview(cellContentView)
     
     // Add the cell scroll view to the cell
+    let cellSubviews = subviews
     insertSubview(cellScrollView, atIndex: 0)
-    for (_, subView) in subviews.enumerate() {
-      cellContentView.addSubview(subView)
+    for (_, cellSubview) in cellSubviews.enumerate() {
+      cellContentView.addSubview(cellSubview)
     }
   }
   
@@ -101,7 +112,7 @@ class HFSwipeTableViewCell: UITableViewCell, UIScrollViewDelegate {
     let swipeAttributes = [NSLayoutAttribute.Right]
     
     let swipeCounts = 1
-    for index in 0...swipeCounts {
+    for index in 0...swipeCounts - 1 {
       let swipeView = swipeViews[index]
       swipeView.translatesAutoresizingMaskIntoConstraints = false
       swipeView.clipsToBounds = true
@@ -133,7 +144,8 @@ class HFSwipeTableViewCell: UITableViewCell, UIScrollViewDelegate {
           toItem: self,
           attribute: swipeAttribute,
           multiplier: 1.0,
-          constant: 0.0)
+          constant: 0.0),
+        swipeViewConstraint
         ])
       
       swipeView.addSubview(swipeBtnView)
@@ -173,9 +185,28 @@ class HFSwipeTableViewCell: UITableViewCell, UIScrollViewDelegate {
     }
   }
   
+  private func updateSwipeCell(swipeStatusType: HFSwipeStatusType, scrollView: UIScrollView) {
+    if swipeStatusType == .HFSwipeStatusRight {
+      if scrollView.contentOffset.x >= 0.0 {
+        var frame = self.contentView.superview?.convertRect(self.contentView.frame, toView: self)
+        frame?.size.width = CGRectGetWidth(self.frame)
+        
+        rightViewConstraint.constant = min(0, CGRectGetMaxX(frame!) - CGRectGetMaxX(self.frame))
+      } else {
+        scrollView.setContentOffset(CGPointZero, animated: false)
+      }
+    }
+  }
+  
   // MARK: UITapGestureRecognizer
   
   func selectOnTap(tapGestureRecognizer: UITapGestureRecognizer) {
+  }
+  
+  // MARK: UIScrollViewDelegate
+  
+  func scrollViewDidScroll(scrollView: UIScrollView) {
+    updateSwipeCell(.HFSwipeStatusRight, scrollView: scrollView)
   }
   
 }
