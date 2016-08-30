@@ -35,6 +35,14 @@ class HFSwipeTableViewCell: UITableViewCell, UIScrollViewDelegate {
   
   override func layoutSubviews() {
     super.layoutSubviews()
+    
+    cellContentView.frame = contentView.frame
+    
+    let rightSwipeBtnViewWidth: CGFloat = 50.0 //
+    cellScrollView.contentSize = CGSizeMake(CGRectGetWidth(contentView.frame) + rightSwipeBtnViewWidth, CGRectGetHeight(contentView.frame))
+    if !cellScrollView.tracking && !cellScrollView.decelerating {
+      cellScrollView.contentOffset = CGPointMake(0.0, 0.0)
+    }
   }
   
   override func setSelected(selected: Bool, animated: Bool) {
