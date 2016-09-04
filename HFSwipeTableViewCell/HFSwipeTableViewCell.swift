@@ -231,4 +231,30 @@ class HFSwipeTableViewCell: UITableViewCell, UIScrollViewDelegate {
     updateSwipeCell(.HFSwipeStatusRight, scrollView: scrollView)
   }
   
+  func scrollViewWillBeginDragging(scrollView: UIScrollView) {
+  }
+  
+  func scrollViewWillEndDragging(scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
+    let rightThreshold: CGFloat = CGRectGetWidth(rightSwipeBtnView.frame) / 2.0
+    if targetContentOffset.memory.x > rightThreshold {
+      targetContentOffset.memory = scrollViewContentOffsetWithSwipeStatusType(.HFSwipeStatusRight)
+    } else {
+      targetContentOffset.memory = CGPointZero
+    }
+  }
+  
+  // MARK: HFSwipeStatusType
+  
+  func scrollViewContentOffsetWithSwipeStatusType(swipeStatusType: HFSwipeStatusType) -> CGPoint {
+    var scrollPoint = CGPointZero
+    switch swipeStatusType {
+    case .HFSwipeStatusCenter, .HFSwipeStatusLeft:
+      break
+    case .HFSwipeStatusRight:
+      scrollPoint.x = CGRectGetWidth(rightSwipeBtnView.frame)
+      break
+    }
+    return scrollPoint
+  }
+  
 }
