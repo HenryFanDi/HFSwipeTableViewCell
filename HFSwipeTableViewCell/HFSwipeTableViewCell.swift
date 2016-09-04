@@ -8,6 +8,19 @@
 
 import UIKit
 
+extension UIView {
+  func parentViewOfType<T>(type: T.Type) -> T? {
+    var currentView = self
+    while currentView.superview != nil {
+      if currentView is T {
+        return currentView as? T
+      }
+      currentView = currentView.superview!
+    }
+    return nil
+  }
+}
+
 class HFSwipeTableViewCell: UITableViewCell, UIScrollViewDelegate {
   
   enum HFSwipeStatusType {
@@ -15,6 +28,9 @@ class HFSwipeTableViewCell: UITableViewCell, UIScrollViewDelegate {
     case HFSwipeStatusLeft
     case HFSwipeStatusRight
   }
+  
+  private var isOpened = Bool()
+  private var tableView: UITableView?
   
   private let cellScrollView = UIScrollView()
   private let cellContentView = UIView()
@@ -46,6 +62,10 @@ class HFSwipeTableViewCell: UITableViewCell, UIScrollViewDelegate {
     }
   }
   
+  override func didMoveToSuperview() {
+    tableView = parentViewOfType(UITableView)
+  }
+  
   override func setSelected(selected: Bool, animated: Bool) {
     super.setSelected(selected, animated: animated)
   }
@@ -69,6 +89,8 @@ class HFSwipeTableViewCell: UITableViewCell, UIScrollViewDelegate {
     cellScrollView.backgroundColor = .clearColor()
     cellScrollView.translatesAutoresizingMaskIntoConstraints = false
     cellScrollView.delegate = self
+    cellScrollView.showsHorizontalScrollIndicator = false
+    cellScrollView.scrollEnabled = true
   }
   
   private func setupCellContentView() {
@@ -232,20 +254,23 @@ class HFSwipeTableViewCell: UITableViewCell, UIScrollViewDelegate {
   }
   
   func scrollViewWillBeginDragging(scrollView: UIScrollView) {
+    hideVisibleCells()
   }
   
   func scrollViewWillEndDragging(scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
     let rightThreshold: CGFloat = CGRectGetWidth(rightSwipeBtnView.frame) / 2.0
     if targetContentOffset.memory.x > rightThreshold {
+      isOpened = true
       targetContentOffset.memory = scrollViewContentOffsetWithSwipeStatusType(.HFSwipeStatusRight)
     } else {
+      isOpened = false
       targetContentOffset.memory = CGPointZero
     }
   }
   
   // MARK: HFSwipeStatusType
   
-  func scrollViewContentOffsetWithSwipeStatusType(swipeStatusType: HFSwipeStatusType) -> CGPoint {
+  private func scrollViewContentOffsetWithSwipeStatusType(swipeStatusType: HFSwipeStatusType) -> CGPoint {
     var scrollPoint = CGPointZero
     switch swipeStatusType {
     case .HFSwipeStatusCenter, .HFSwipeStatusLeft:
@@ -255,6 +280,25 @@ class HFSwipeTableViewCell: UITableViewCell, UIScrollViewDelegate {
       break
     }
     return scrollPoint
+  }
+  
+  // MARK: Hide Visible
+  
+  private func hideVisibleCells() {
+    if tableView != nil {
+      for cell in tableView!.visibleCells {
+        if cell.isKindOfClass(HFSwipeTableViewCell) {
+          if (cell as! HFSwipeTableViewCell).isOpened {
+            hideCell((cell as! HFSwipeTableViewCell))
+          }
+        }
+      }
+    }
+  }
+  
+  private func hideCell(cell: HFSwipeTableViewCell) {
+    cell.isOpened = false
+    cellScrollView.setContentOffset(CGPointZero, animated: true)
   }
   
 }
