@@ -298,7 +298,7 @@ class HFSwipeTableViewCell: UITableViewCell, UIScrollViewDelegate {
   
   private func hideCell(cell: HFSwipeTableViewCell) {
     cell.isOpened = false
-    cellScrollView.setContentOffset(CGPointZero, animated: true)
+    cell.cellScrollView.setContentOffset(CGPointZero, animated: true)
   }
   
 }
