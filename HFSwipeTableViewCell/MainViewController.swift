@@ -33,6 +33,7 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
   
   private func setupTableView() {
     tableView.registerNib(MainTableViewCell.nib(), forCellReuseIdentifier: MainCellReuseIdentifier)
+    tableView.estimatedRowHeight = 70.0
     tableView.rowHeight = UITableViewAutomaticDimension
   }
   
