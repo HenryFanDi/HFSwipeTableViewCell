@@ -11,6 +11,8 @@ import UIKit
 class MainTableViewCell: HFSwipeTableViewCell {
   
   @IBOutlet weak var avatarView: UIView!
+  @IBOutlet weak var titleLabel: UILabel!
+  @IBOutlet weak var subTitleLabel: UILabel!
   
   // MARK: Lifecycle
   
@@ -27,10 +29,18 @@ class MainTableViewCell: HFSwipeTableViewCell {
   
   private func setupMainTableViewCell() {
     setupAvatarView()
+    setupTitleLabel()
+    setupSubTitleLabel()
   }
   
   private func setupAvatarView() {
     avatarView.layer.cornerRadius = CGRectGetHeight(avatarView.frame) / 2.0
+  }
+  
+  private func setupTitleLabel() {
+  }
+  
+  private func setupSubTitleLabel() {
   }
   
 }
