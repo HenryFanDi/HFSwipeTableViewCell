@@ -13,17 +13,17 @@
                 <rect key="frame" x="0.0" y="0.0" width="320" height="69.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SRy-55-FJR" userLabel="Avatar View">
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="CUD-gQ-27T" userLabel="Avatar Image View">
                         <rect key="frame" x="10" y="10" width="50" height="50"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstAttribute="width" priority="900" constant="50" id="0Pw-xb-KtC"/>
-                            <constraint firstAttribute="height" priority="900" constant="50" id="ezs-OC-hlI"/>
+                            <constraint firstAttribute="width" priority="900" constant="50" id="7QP-yY-L02"/>
+                            <constraint firstAttribute="height" priority="900" constant="50" id="RlM-Mw-JAy"/>
                         </constraints>
-                    </view>
+                    </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DyK-T6-0qk" userLabel="Title Label">
                         <rect key="frame" x="70" y="15" width="240" height="20"/>
-                        <color key="backgroundColor" red="0.80000001190000003" green="0.80000001190000003" blue="0.80000001190000003" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="height" priority="900" constant="20" id="NVO-Jg-6G4"/>
                         </constraints>
@@ -33,28 +33,29 @@
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nIq-SA-r6O" userLabel="Sub Title Label">
                         <rect key="frame" x="70" y="35" width="240" height="20"/>
-                        <color key="backgroundColor" red="0.80000001190000003" green="0.80000001190000003" blue="0.80000001190000003" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                 </subviews>
+                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                 <constraints>
-                    <constraint firstItem="nIq-SA-r6O" firstAttribute="leading" secondItem="SRy-55-FJR" secondAttribute="trailing" constant="10" id="80W-PZ-JJc"/>
-                    <constraint firstItem="DyK-T6-0qk" firstAttribute="leading" secondItem="SRy-55-FJR" secondAttribute="trailing" constant="10" id="FDZ-wU-N5w"/>
-                    <constraint firstItem="SRy-55-FJR" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="SLD-KI-9jY"/>
+                    <constraint firstItem="nIq-SA-r6O" firstAttribute="leading" secondItem="CUD-gQ-27T" secondAttribute="trailing" constant="10" id="0A1-U9-x7W"/>
+                    <constraint firstItem="CUD-gQ-27T" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="0Dy-y7-pWa"/>
+                    <constraint firstItem="DyK-T6-0qk" firstAttribute="leading" secondItem="CUD-gQ-27T" secondAttribute="trailing" constant="10" id="98i-XF-vr7"/>
+                    <constraint firstItem="CUD-gQ-27T" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="GB7-4F-wZm"/>
                     <constraint firstAttribute="bottom" secondItem="nIq-SA-r6O" secondAttribute="bottom" constant="15" id="WVU-e3-2rQ"/>
                     <constraint firstAttribute="trailing" secondItem="DyK-T6-0qk" secondAttribute="trailing" constant="10" id="YeA-sD-coC"/>
-                    <constraint firstItem="SRy-55-FJR" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="f4D-iq-yWC"/>
-                    <constraint firstAttribute="bottom" secondItem="SRy-55-FJR" secondAttribute="bottom" constant="10" id="fkR-MK-8e0"/>
+                    <constraint firstAttribute="bottom" secondItem="CUD-gQ-27T" secondAttribute="bottom" constant="10" id="aQY-eP-kP3"/>
                     <constraint firstItem="nIq-SA-r6O" firstAttribute="top" secondItem="DyK-T6-0qk" secondAttribute="bottom" id="hPm-hV-qt1"/>
                     <constraint firstItem="DyK-T6-0qk" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="15" id="reA-xL-bso"/>
                     <constraint firstAttribute="trailing" secondItem="nIq-SA-r6O" secondAttribute="trailing" constant="10" id="uLy-Lp-Svw"/>
                 </constraints>
             </tableViewCellContentView>
-            <color key="backgroundColor" red="1" green="0.40000000600000002" blue="0.40000000600000002" alpha="1" colorSpace="calibratedRGB"/>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
             <connections>
-                <outlet property="avatarView" destination="SRy-55-FJR" id="TDd-Nd-vGV"/>
+                <outlet property="avatarImageView" destination="CUD-gQ-27T" id="HZD-4x-mFi"/>
                 <outlet property="subTitleLabel" destination="nIq-SA-r6O" id="fKj-Sh-doZ"/>
                 <outlet property="titleLabel" destination="DyK-T6-0qk" id="pT0-Fe-K3J"/>
             </connections>
