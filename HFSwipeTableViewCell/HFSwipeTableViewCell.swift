@@ -55,7 +55,7 @@ class HFSwipeTableViewCell: UITableViewCell, UIScrollViewDelegate {
     cellContentView.frame = contentView.frame
     
 //    let rightSwipeBtnViewWidth: CGFloat = CGRectGetWidth(rightSwipeBtnView.frame)
-    let rightSwipeBtnViewWidth: CGFloat = 50.0
+    let rightSwipeBtnViewWidth: CGFloat = 80.0
     cellScrollView.contentSize = CGSizeMake(CGRectGetWidth(contentView.frame) + rightSwipeBtnViewWidth, CGRectGetHeight(contentView.frame))
     if !cellScrollView.tracking && !cellScrollView.decelerating {
       cellScrollView.contentOffset = CGPointMake(0.0, 0.0)
@@ -133,7 +133,7 @@ class HFSwipeTableViewCell: UITableViewCell, UIScrollViewDelegate {
                                                   constant: 0.0)
   }
   
-  private func setupSwipeBtnViews() {
+  private func setupSwipeBtnViews() { // Custom views
     let widthConstraint = NSLayoutConstraint.init(item: rightSwipeBtnView,
                                                   attribute: .Width,
                                                   relatedBy: .Equal,
@@ -142,9 +142,9 @@ class HFSwipeTableViewCell: UITableViewCell, UIScrollViewDelegate {
                                                   multiplier: 1.0,
                                                   constant: 0.0)
     widthConstraint.priority = UILayoutPriorityDefaultHigh
-    widthConstraint.constant = 50.0
+    widthConstraint.constant = 80.0
     
-    rightSwipeBtnView.backgroundColor = .redColor()
+    rightSwipeBtnView.backgroundColor = .lightGrayColor()
     rightSwipeBtnView.translatesAutoresizingMaskIntoConstraints = false
     rightSwipeBtnView.addConstraint(widthConstraint)
   }
