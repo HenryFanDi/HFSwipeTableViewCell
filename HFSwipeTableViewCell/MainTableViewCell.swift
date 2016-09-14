@@ -10,7 +10,7 @@ import UIKit
 
 class MainTableViewCell: HFSwipeTableViewCell {
   
-  @IBOutlet weak var avatarView: UIView!
+  @IBOutlet weak var avatarImageView: UIImageView!
   @IBOutlet weak var titleLabel: UILabel!
   @IBOutlet weak var subTitleLabel: UILabel!
   
@@ -25,22 +25,36 @@ class MainTableViewCell: HFSwipeTableViewCell {
     return UINib(nibName: "MainTableViewCell", bundle: nil)
   }
   
+  // MARK: Public
+  
+  func configurationWithAvatar(avatar: Dictionary <String, AnyObject>) {
+    avatarImageView.image = avatar["image"] as? UIImage
+    titleLabel.text = avatar["title"] as? String
+    subTitleLabel.text = avatar["subTitle"] as? String
+  }
+  
   // MARK: Private
   
   private func setupMainTableViewCell() {
-    setupAvatarView()
+    setupAvatarImageView()
     setupTitleLabel()
     setupSubTitleLabel()
   }
   
-  private func setupAvatarView() {
-    avatarView.layer.cornerRadius = CGRectGetHeight(avatarView.frame) / 2.0
+  private func setupAvatarImageView() {
+    avatarImageView.contentMode = .ScaleAspectFill
+    avatarImageView.clipsToBounds = true
+    avatarImageView.layer.borderWidth = 0.5
+    avatarImageView.layer.borderColor = UIColor.lightGrayColor().CGColor
+    avatarImageView.layer.cornerRadius = CGRectGetHeight(avatarImageView.frame) / 2.0
   }
   
   private func setupTitleLabel() {
+    titleLabel.textColor = .blackColor()
   }
   
   private func setupSubTitleLabel() {
+    subTitleLabel.textColor = .lightGrayColor()
   }
   
 }

@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D809879C1D88D87F0032CDA2 /* Amy.png in Resources */ = {isa = PBXBuildFile; fileRef = D80987991D88D87F0032CDA2 /* Amy.png */; };
+		D809879D1D88D87F0032CDA2 /* Eric.png in Resources */ = {isa = PBXBuildFile; fileRef = D809879A1D88D87F0032CDA2 /* Eric.png */; };
+		D809879E1D88D87F0032CDA2 /* Jason.png in Resources */ = {isa = PBXBuildFile; fileRef = D809879B1D88D87F0032CDA2 /* Jason.png */; };
 		D849AA601D651D7E00448ADD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D849AA5F1D651D7E00448ADD /* AppDelegate.swift */; };
 		D849AA681D651D7E00448ADD /* HFSwipeTableViewCell.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D849AA661D651D7E00448ADD /* HFSwipeTableViewCell.xcdatamodeld */; };
 		D849AA6A1D651D7E00448ADD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D849AA691D651D7E00448ADD /* Assets.xcassets */; };
@@ -39,6 +42,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		D80987991D88D87F0032CDA2 /* Amy.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Amy.png; sourceTree = "<group>"; };
+		D809879A1D88D87F0032CDA2 /* Eric.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Eric.png; sourceTree = "<group>"; };
+		D809879B1D88D87F0032CDA2 /* Jason.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Jason.png; sourceTree = "<group>"; };
 		D849AA5C1D651D7E00448ADD /* HFSwipeTableViewCell.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HFSwipeTableViewCell.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D849AA5F1D651D7E00448ADD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D849AA671D651D7E00448ADD /* HFSwipeTableViewCell.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = HFSwipeTableViewCell.xcdatamodel; sourceTree = "<group>"; };
@@ -84,6 +90,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		D80987981D88D86D0032CDA2 /* Avatars */ = {
+			isa = PBXGroup;
+			children = (
+				D80987991D88D87F0032CDA2 /* Amy.png */,
+				D809879A1D88D87F0032CDA2 /* Eric.png */,
+				D809879B1D88D87F0032CDA2 /* Jason.png */,
+			);
+			name = Avatars;
+			sourceTree = "<group>";
+		};
 		D849AA531D651D7E00448ADD = {
 			isa = PBXGroup;
 			children = (
@@ -107,6 +123,7 @@
 		D849AA5E1D651D7E00448ADD /* HFSwipeTableViewCell */ = {
 			isa = PBXGroup;
 			children = (
+				D80987981D88D86D0032CDA2 /* Avatars */,
 				D849AA5F1D651D7E00448ADD /* AppDelegate.swift */,
 				D8B44A6F1D66852D00F69B40 /* MainViewController.swift */,
 				D8B44A701D66852D00F69B40 /* MainViewController.xib */,
@@ -247,8 +264,11 @@
 				D849AA6A1D651D7E00448ADD /* Assets.xcassets in Resources */,
 				D8B44A761D66862400F69B40 /* LaunchScreen.xib in Resources */,
 				D8B44A7A1D67BC9700F69B40 /* HFSwipeTableViewCell.xib in Resources */,
+				D809879C1D88D87F0032CDA2 /* Amy.png in Resources */,
 				D8B44A721D66852D00F69B40 /* MainViewController.xib in Resources */,
 				D8B44A8C1D6A64DD00F69B40 /* MainTableViewCell.xib in Resources */,
+				D809879D1D88D87F0032CDA2 /* Eric.png in Resources */,
+				D809879E1D88D87F0032CDA2 /* Jason.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

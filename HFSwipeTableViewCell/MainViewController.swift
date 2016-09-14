@@ -11,6 +11,7 @@ import UIKit
 class MainViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
   
   private let MainCellReuseIdentifier = "MainCellReuseIdentifier"
+  private var avatars = [Dictionary <String, AnyObject>]()
   
   // MARK: Lifecycle
   
@@ -28,7 +29,15 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
   // MARK: Private
   
   private func setupMainViewController() {
+    setupAvatars()
     setupTableView()
+  }
+  
+  private func setupAvatars() {
+    let amy = ["image": UIImage.init(named: "Amy")!, "title": "Amy", "subTitle": "Hello, I'm Amy"]
+    let eric = ["image": UIImage.init(named: "Eric")!, "title": "Eric", "subTitle": "Hello, I'm Eric"]
+    let jason = ["image": UIImage.init(named: "Jason")!, "title": "Jason", "subTitle": "Hello, I'm Jason"]
+    avatars = [amy, eric, jason]
   }
   
   private func setupTableView() {
@@ -40,15 +49,16 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
   // MARK: UITableViewDataSource
   
   func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    return 1
+    return avatars.count
   }
   
   func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-    return 5
+    return 1
   }
   
   func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
     let mainTableViewCell = tableView.dequeueReusableCellWithIdentifier(MainCellReuseIdentifier) as? MainTableViewCell
+    mainTableViewCell?.configurationWithAvatar(avatars[indexPath.row])
     return mainTableViewCell!
   }
   
