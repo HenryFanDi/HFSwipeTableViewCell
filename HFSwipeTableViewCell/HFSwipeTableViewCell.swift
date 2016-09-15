@@ -71,12 +71,8 @@ class HFSwipeTableViewCell: UITableViewCell, UIScrollViewDelegate {
   
   // MARK: Public
   
-  func setRightSwipeButtonsWithSingleWidth(rightSwipeBtns: [HFSwipeButton], btnWidth: CGFloat) { // Single width
-    rightSwipeBtnView.setSwipeButtonsWithSingleWidth(rightSwipeBtns, btnWidth: btnWidth)
-  }
-  
-  func setRightSwipeButtonsWithMultipleWidth(rightSwipeBtns: [HFSwipeButton], btnWidths: [CGFloat]) { // Multiple width
-    rightSwipeBtnView.setSwipeButtonsWithMultipleWidth(rightSwipeBtns, btnWidths: btnWidths)
+  func setRightSwipeButtons(rightSwipeBtns: [HFSwipeButton], btnWidths: [CGFloat]) {
+    rightSwipeBtnView.setSwipeButtons(rightSwipeBtns, btnWidths: btnWidths)
   }
   
   // MARK: Private
@@ -242,7 +238,7 @@ class HFSwipeTableViewCell: UITableViewCell, UIScrollViewDelegate {
     if tableView != nil {
       for cell in tableView!.visibleCells {
         if cell.isKindOfClass(HFSwipeTableViewCell) {
-          if (cell as! HFSwipeTableViewCell).isOpened {
+          if (cell as! HFSwipeTableViewCell).isOpened && cell != self {
             hideCell((cell as! HFSwipeTableViewCell))
           }
         }

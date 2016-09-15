@@ -58,9 +58,9 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
   
   func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
     let mainTableViewCell = tableView.dequeueReusableCellWithIdentifier(MainCellReuseIdentifier) as? MainTableViewCell
-    mainTableViewCell?.setRightSwipeButtonsWithSingleWidth([
+    mainTableViewCell?.setRightSwipeButtons([
       HFSwipeButton.init(swipeButtonType: .HFSwipeButtonDial)
-      ], btnWidth: 50.0)
+      ], btnWidths: [50.0])
     mainTableViewCell?.configurationWithAvatar(avatars[indexPath.row])
     return mainTableViewCell!
   }
