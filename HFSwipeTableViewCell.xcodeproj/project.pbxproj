@@ -22,6 +22,9 @@
 		D8B44A7A1D67BC9700F69B40 /* HFSwipeTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D8B44A781D67BC9700F69B40 /* HFSwipeTableViewCell.xib */; };
 		D8B44A8B1D6A64DD00F69B40 /* MainTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8B44A891D6A64DD00F69B40 /* MainTableViewCell.swift */; };
 		D8B44A8C1D6A64DD00F69B40 /* MainTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D8B44A8A1D6A64DD00F69B40 /* MainTableViewCell.xib */; };
+		D8CB237A1D8A2EB700866152 /* HFSwipeButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8CB23791D8A2EB700866152 /* HFSwipeButton.swift */; };
+		D8CB237C1D8A349100866152 /* Dial.png in Resources */ = {isa = PBXBuildFile; fileRef = D8CB237B1D8A349100866152 /* Dial.png */; };
+		D8CB237E1D8A38F900866152 /* HFSwipeButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8CB237D1D8A38F900866152 /* HFSwipeButtonView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -63,6 +66,9 @@
 		D8B44A781D67BC9700F69B40 /* HFSwipeTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HFSwipeTableViewCell.xib; sourceTree = "<group>"; };
 		D8B44A891D6A64DD00F69B40 /* MainTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainTableViewCell.swift; sourceTree = "<group>"; };
 		D8B44A8A1D6A64DD00F69B40 /* MainTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainTableViewCell.xib; sourceTree = "<group>"; };
+		D8CB23791D8A2EB700866152 /* HFSwipeButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HFSwipeButton.swift; sourceTree = "<group>"; };
+		D8CB237B1D8A349100866152 /* Dial.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Dial.png; sourceTree = "<group>"; };
+		D8CB237D1D8A38F900866152 /* HFSwipeButtonView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HFSwipeButtonView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -96,6 +102,7 @@
 				D80987991D88D87F0032CDA2 /* Amy.png */,
 				D809879A1D88D87F0032CDA2 /* Eric.png */,
 				D809879B1D88D87F0032CDA2 /* Jason.png */,
+				D8CB237B1D8A349100866152 /* Dial.png */,
 			);
 			name = Avatars;
 			sourceTree = "<group>";
@@ -131,6 +138,8 @@
 				D8B44A8A1D6A64DD00F69B40 /* MainTableViewCell.xib */,
 				D8B44A771D67BC9700F69B40 /* HFSwipeTableViewCell.swift */,
 				D8B44A781D67BC9700F69B40 /* HFSwipeTableViewCell.xib */,
+				D8CB237D1D8A38F900866152 /* HFSwipeButtonView.swift */,
+				D8CB23791D8A2EB700866152 /* HFSwipeButton.swift */,
 				D849AA661D651D7E00448ADD /* HFSwipeTableViewCell.xcdatamodeld */,
 				D849AA691D651D7E00448ADD /* Assets.xcassets */,
 				D8B44A751D66862400F69B40 /* LaunchScreen.xib */,
@@ -261,6 +270,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D8CB237C1D8A349100866152 /* Dial.png in Resources */,
 				D849AA6A1D651D7E00448ADD /* Assets.xcassets in Resources */,
 				D8B44A761D66862400F69B40 /* LaunchScreen.xib in Resources */,
 				D8B44A7A1D67BC9700F69B40 /* HFSwipeTableViewCell.xib in Resources */,
@@ -297,7 +307,9 @@
 				D849AA681D651D7E00448ADD /* HFSwipeTableViewCell.xcdatamodeld in Sources */,
 				D8B44A791D67BC9700F69B40 /* HFSwipeTableViewCell.swift in Sources */,
 				D849AA601D651D7E00448ADD /* AppDelegate.swift in Sources */,
+				D8CB237A1D8A2EB700866152 /* HFSwipeButton.swift in Sources */,
 				D8B44A8B1D6A64DD00F69B40 /* MainTableViewCell.swift in Sources */,
+				D8CB237E1D8A38F900866152 /* HFSwipeButtonView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
