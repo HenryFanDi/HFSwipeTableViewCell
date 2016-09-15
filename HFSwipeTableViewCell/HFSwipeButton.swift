@@ -53,15 +53,18 @@ class HFSwipeButton: UIButton {
   }
   
   private func setupSwipeButtonWithSwipeButtonType() {
+    var btnBackgroundColor = .whiteColor() as UIColor
     var imageNamed = ""
     switch swipeButtonType {
     case .HFSwipeButtonDial:
+      btnBackgroundColor = .lightGrayColor()
       imageNamed = "Dial"
       break
     default:
       break
     }
-    self.swipeImageView.image = UIImage.init(named: imageNamed)
+    backgroundColor = btnBackgroundColor
+    swipeImageView.image = UIImage.init(named: imageNamed)
   }
   
   private func setupSwipeButtonConstraints() {

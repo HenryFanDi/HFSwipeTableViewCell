@@ -67,8 +67,9 @@ class HFSwipeButtonView: UIView {
     if swipeBtns.count > 0 {
       var index = 0
       var btnPrevious = HFSwipeButton.init(swipeButtonType: .HFSwipeButtonUnknown)
-      let metrics = [
-        "padding": 0.0
+      var metrics = [
+        "padding": 0.0,
+        "btnWidth": 0.0 as CGFloat
       ]
       
       for btn in swipeBtns {
@@ -81,11 +82,12 @@ class HFSwipeButtonView: UIView {
         } else {
           btnWidth = anyObject as! CGFloat
         }
+        metrics["btnWidth"] = btnWidth
         
         if index == 0 {
-          addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("H:|-padding-[btn(50)]", options: NSLayoutFormatOptions(rawValue: 0), metrics: metrics, views: ["btn": btn, "btnWidth": btnWidth]))
+          addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("H:|-padding-[btn(btnWidth)]", options: NSLayoutFormatOptions(rawValue: 0), metrics: metrics, views: ["btn": btn]))
         } else {
-          addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("H:[btnPrevious]-padding-[btn(50)]", options: NSLayoutFormatOptions(rawValue: 0), metrics: metrics, views: ["btnPrevious": btnPrevious, "btn": btn, "btnWidth": btnWidth]))
+          addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("H:[btnPrevious]-padding-[btn(btnWidth)]", options: NSLayoutFormatOptions(rawValue: 0), metrics: metrics, views: ["btnPrevious": btnPrevious, "btn": btn]))
         }
         addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("V:|-padding-[btn]-padding-|", options: NSLayoutFormatOptions(rawValue: 0), metrics: metrics, views: ["btn": btn]))
         
