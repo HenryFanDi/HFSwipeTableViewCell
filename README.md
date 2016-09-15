@@ -25,12 +25,23 @@ func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexP
 	let customTableViewCell = tableView.dequeueReusableCellWithIdentifier(CustomCellReuseIdentifier) as? CustomTableViewCell
 	
 	customTableViewCell?.setRightSwipeButtons([
-      HFSwipeButton.init(swipeButtonType: .HFSwipeButtonDial)
+      swipeButton(swipeButtonType: .CustomType)
       ], btnWidths: [50.0])
 	...
 	
 	return customTableViewCell!
   }
+```
+
+Init `HFSwipeButton` by custom type.
+
+```swift
+private func swipeButton(swipeButtonType swipeButtonType: HFSwipeButtonType) -> HFSwipeButton {
+	let swipeButton = HFSwipeButton.init(swipeButtonType: swipeButtonType)
+	swipeButton.delegate = self
+	return swipeButton
+}
+
 ```
 
 ### HFSwipeButton
@@ -45,6 +56,7 @@ private func setupSwipeButtonWithSwipeButtonType() {
 		swipeImageSize = 50.0
 		btnBackgroundColor = .lightGrayColor()
 		imageNamed = "Custom"
+		addTarget(self, action: #selector(HFSwipeButton.customBtnOnTap), forControlEvents: .TouchUpInside)
 		break
 	default:
 		break
@@ -64,9 +76,16 @@ private func setupSwipeButtonWithSwipeButtonType() {
 
 2. Setup properties.
 
-	* `swipeImageSize: CGFloat` － Image size, setup if needed, default is 20.0
-	* `btnBackgroundColor: UIColor` － Button background color
-	* `imageNamed: String` － Image name
+	* `swipeImageSize: CGFloat` － Image size, setup if needed, default is 20.0.
+	* `btnBackgroundColor: UIColor` － Button background color.
+	* `imageNamed: String` － Image name.
+	* `addTarget: action: forControlEvents` － Implement its on tap event and pass event with delegate.
+
+		```swift
+		func customBtnOnTap() {
+			delegate?.customBtnOnTap()
+		}
+		```
 
 ## Feature
 
