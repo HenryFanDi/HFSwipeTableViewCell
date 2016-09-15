@@ -242,7 +242,7 @@ class HFSwipeTableViewCell: UITableViewCell, UIScrollViewDelegate {
     if tableView != nil {
       for cell in tableView!.visibleCells {
         if cell.isKindOfClass(HFSwipeTableViewCell) {
-          if (cell as! HFSwipeTableViewCell).isOpened {
+          if (cell as! HFSwipeTableViewCell).isOpened && cell != self {
             hideCell((cell as! HFSwipeTableViewCell))
           }
         }
