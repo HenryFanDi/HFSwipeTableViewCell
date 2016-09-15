@@ -13,8 +13,14 @@ enum HFSwipeButtonType {
   case HFSwipeButtonDial
 }
 
+protocol HFSwipeButtonDelegate {
+  func dialBtnOnTap()
+}
+
 class HFSwipeButton: UIButton {
   
+  var delegate: HFSwipeButtonDelegate?
+
   private var swipeButtonType: HFSwipeButtonType
   private let swipeImageView: UIImageView
   private var swipeImageSize: CGFloat
@@ -26,6 +32,7 @@ class HFSwipeButton: UIButton {
   }
   
   init(swipeButtonType: HFSwipeButtonType) {
+    self.delegate = nil
     self.swipeButtonType = swipeButtonType
     self.swipeImageView = UIImageView()
     self.swipeImageSize = 0.0
@@ -59,6 +66,7 @@ class HFSwipeButton: UIButton {
     case .HFSwipeButtonDial:
       btnBackgroundColor = .lightGrayColor()
       imageNamed = "Dial"
+      addTarget(self, action: #selector(HFSwipeButton.dialBtnOnTap), forControlEvents: .TouchUpInside)
       break
     default:
       break
@@ -77,6 +85,12 @@ class HFSwipeButton: UIButton {
       NSLayoutConstraint.init(item: swipeImageView, attribute: .CenterX, relatedBy: .Equal, toItem: self, attribute: .CenterX, multiplier: 1.0, constant: 0.0),
       NSLayoutConstraint.init(item: swipeImageView, attribute: .CenterY, relatedBy: .Equal, toItem: self, attribute: .CenterY, multiplier: 1.0, constant: 0.0)
       ])
+  }
+  
+  // MARK: Dial
+  
+  func dialBtnOnTap() {
+    delegate?.dialBtnOnTap()
   }
   
 }

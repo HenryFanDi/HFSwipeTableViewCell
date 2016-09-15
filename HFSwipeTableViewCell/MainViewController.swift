@@ -8,7 +8,7 @@
 
 import UIKit
 
-class MainViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class MainViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, HFSwipeButtonDelegate {
   
   private let MainCellReuseIdentifier = "MainCellReuseIdentifier"
   private var avatars = [Dictionary <String, AnyObject>]()
@@ -59,7 +59,7 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
   func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
     let mainTableViewCell = tableView.dequeueReusableCellWithIdentifier(MainCellReuseIdentifier) as? MainTableViewCell
     mainTableViewCell?.setRightSwipeButtons([
-      HFSwipeButton.init(swipeButtonType: .HFSwipeButtonDial)
+      swipeButton(swipeButtonType: .HFSwipeButtonDial)
       ], btnWidths: [50.0])
     mainTableViewCell?.configurationWithAvatar(avatars[indexPath.row])
     return mainTableViewCell!
@@ -68,6 +68,20 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
   // MARK: UITableViewDelegate
   
   func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+  }
+  
+  // MARK: HFSwipeButton
+  
+  private func swipeButton(swipeButtonType swipeButtonType: HFSwipeButtonType) -> HFSwipeButton {
+    let swipeButton = HFSwipeButton.init(swipeButtonType: swipeButtonType)
+    swipeButton.delegate = self
+    return swipeButton
+  }
+  
+  // MARK: HFSwipeButtonDelegate
+  
+  func dialBtnOnTap() {
+    print("dialBtnOnTap")
   }
   
 }
