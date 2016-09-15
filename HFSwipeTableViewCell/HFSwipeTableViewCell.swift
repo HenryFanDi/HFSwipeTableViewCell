@@ -40,7 +40,7 @@ class HFSwipeTableViewCell: UITableViewCell, UIScrollViewDelegate {
   private let rightView = UIView()
   private var rightViewConstraint = NSLayoutConstraint()
   
-  private let rightSwipeBtnView = UIView()
+  private let rightSwipeBtnView = HFSwipeButtonView()
   
   // MARK: Lifecycle
   
@@ -54,8 +54,7 @@ class HFSwipeTableViewCell: UITableViewCell, UIScrollViewDelegate {
     
     cellContentView.frame = contentView.frame
     
-//    let rightSwipeBtnViewWidth: CGFloat = CGRectGetWidth(rightSwipeBtnView.frame)
-    let rightSwipeBtnViewWidth: CGFloat = 80.0
+    let rightSwipeBtnViewWidth: CGFloat = CGRectGetWidth(rightSwipeBtnView.frame)
     cellScrollView.contentSize = CGSizeMake(CGRectGetWidth(contentView.frame) + rightSwipeBtnViewWidth, CGRectGetHeight(contentView.frame))
     if !cellScrollView.tracking && !cellScrollView.decelerating {
       cellScrollView.contentOffset = CGPointMake(0.0, 0.0)
@@ -68,6 +67,16 @@ class HFSwipeTableViewCell: UITableViewCell, UIScrollViewDelegate {
   
   override func setSelected(selected: Bool, animated: Bool) {
     super.setSelected(selected, animated: animated)
+  }
+  
+  // MARK: Public
+  
+  func setRightSwipeButtonsWithSingleWidth(rightSwipeBtns: [HFSwipeButton], btnWidth: CGFloat) { // Single width
+    rightSwipeBtnView.setSwipeButtonsWithSingleWidth(rightSwipeBtns, btnWidth: btnWidth)
+  }
+  
+  func setRightSwipeButtonsWithMultipleWidth(rightSwipeBtns: [HFSwipeButton], btnWidths: [CGFloat]) { // Multiple width
+    rightSwipeBtnView.setSwipeButtonsWithMultipleWidth(rightSwipeBtns, btnWidths: btnWidths)
   }
   
   // MARK: Private
@@ -112,8 +121,8 @@ class HFSwipeTableViewCell: UITableViewCell, UIScrollViewDelegate {
   }
   
   private func setupCellViewsConstraints() {
-    let metrics = ["padding" : 0]
-    let views = ["cellScrollView" : cellScrollView]
+    let metrics = ["padding": 0.0]
+    let views = ["cellScrollView": cellScrollView]
     let horizontalConstraints = NSLayoutConstraint.constraintsWithVisualFormat("H:|-padding-[cellScrollView]-padding-|", options: [.AlignAllBaseline], metrics: metrics, views: views)
     let verticalConstraints = NSLayoutConstraint.constraintsWithVisualFormat("V:|-padding-[cellScrollView]-padding-|", options: [.AlignAllBaseline], metrics: metrics, views: views)
     addConstraints(horizontalConstraints)
@@ -133,20 +142,7 @@ class HFSwipeTableViewCell: UITableViewCell, UIScrollViewDelegate {
                                                   constant: 0.0)
   }
   
-  private func setupSwipeBtnViews() { // Custom views
-    let widthConstraint = NSLayoutConstraint.init(item: rightSwipeBtnView,
-                                                  attribute: .Width,
-                                                  relatedBy: .Equal,
-                                                  toItem: nil,
-                                                  attribute: .NotAnAttribute,
-                                                  multiplier: 1.0,
-                                                  constant: 0.0)
-    widthConstraint.priority = UILayoutPriorityDefaultHigh
-    widthConstraint.constant = 80.0
-    
-    rightSwipeBtnView.backgroundColor = .lightGrayColor()
-    rightSwipeBtnView.translatesAutoresizingMaskIntoConstraints = false
-    rightSwipeBtnView.addConstraint(widthConstraint)
+  private func setupSwipeBtnViews() {
   }
   
   private func setupSwipeViewsConstraints() {
@@ -168,63 +164,21 @@ class HFSwipeTableViewCell: UITableViewCell, UIScrollViewDelegate {
       let swipeBtnView = swipeBtnViews[index]
       let swipeAttribute = swipeAttributes[index]
       addConstraints([
-        NSLayoutConstraint.init(item: swipeView,
-          attribute: .Top,
-          relatedBy: .Equal,
-          toItem: self,
-          attribute: .Top,
-          multiplier: 1.0,
-          constant: 0.0),
-        NSLayoutConstraint.init(item: swipeView,
-          attribute: .Bottom,
-          relatedBy: .Equal,
-          toItem: self,
-          attribute: .Bottom,
-          multiplier: 1.0,
-          constant: 0.0),
-        NSLayoutConstraint.init(item: swipeView,
-          attribute: swipeAttribute,
-          relatedBy: .Equal,
-          toItem: self,
-          attribute: swipeAttribute,
-          multiplier: 1.0,
-          constant: 0.0),
+        NSLayoutConstraint.init(item: swipeView, attribute: .Top, relatedBy: .Equal, toItem: self, attribute: .Top, multiplier: 1.0, constant: 0.0),
+        NSLayoutConstraint.init(item: swipeView, attribute: .Bottom, relatedBy: .Equal, toItem: self, attribute: .Bottom, multiplier: 1.0, constant: 0.0),
+        NSLayoutConstraint.init(item: swipeView, attribute: swipeAttribute, relatedBy: .Equal, toItem: self, attribute: swipeAttribute, multiplier: 1.0, constant: 0.0),
         swipeViewConstraint
         ])
       
       swipeView.addSubview(swipeBtnView)
       swipeView.addConstraints([
-        NSLayoutConstraint.init(item: swipeBtnView,
-          attribute: .Top,
-          relatedBy: .Equal,
-          toItem: swipeView,
-          attribute: .Top,
-          multiplier: 1.0,
-          constant: 0.0),
-        NSLayoutConstraint.init(item: swipeBtnView,
-          attribute: .Bottom,
-          relatedBy: .Equal,
-          toItem: swipeView,
-          attribute: .Bottom,
-          multiplier: 1.0,
-          constant: 0.0),
-        NSLayoutConstraint.init(item: swipeBtnView,
-          attribute: swipeAttribute,
-          relatedBy: .Equal,
-          toItem: swipeView,
-          attribute: swipeAttribute,
-          multiplier: 1.0,
-          constant: 0.0)
+        NSLayoutConstraint.init(item: swipeBtnView, attribute: .Top, relatedBy: .Equal, toItem: swipeView, attribute: .Top, multiplier: 1.0, constant: 0.0),
+        NSLayoutConstraint.init(item: swipeBtnView, attribute: .Bottom, relatedBy: .Equal, toItem: swipeView, attribute: .Bottom, multiplier: 1.0, constant: 0.0),
+        NSLayoutConstraint.init(item: swipeBtnView, attribute: swipeAttribute, relatedBy: .Equal, toItem: swipeView, attribute: swipeAttribute, multiplier: 1.0, constant: 0.0)
         ])
       
       addConstraints([
-        NSLayoutConstraint.init(item: swipeBtnView,
-          attribute: .Width,
-          relatedBy: .LessThanOrEqual,
-          toItem: self,
-          attribute: .Width,
-          multiplier: 1.0,
-          constant: 90.0)
+        NSLayoutConstraint.init(item: swipeBtnView, attribute: .Width, relatedBy: .LessThanOrEqual, toItem: self, attribute: .Width, multiplier: 1.0, constant: 90.0)
         ])
     }
   }

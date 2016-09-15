@@ -30,6 +30,7 @@ class HFSwipeButton: UIButton {
     self.swipeImageView = UIImageView()
     self.swipeImageSize = 0.0
     super.init(frame: CGRectZero)
+    setupButton()
   }
   
   // MARK: Private
@@ -64,31 +65,14 @@ class HFSwipeButton: UIButton {
   }
   
   private func setupSwipeButtonConstraints() {
-    swipeImageView.addConstraint(
-      NSLayoutConstraint.init(item: swipeImageView,
-        attribute: .Height,
-        relatedBy: .Equal,
-        toItem: nil,
-        attribute: .Height,
-        multiplier: 1.0,
-        constant: swipeImageSize)
-    )
+    swipeImageView.addConstraints([
+      NSLayoutConstraint.init(item: swipeImageView, attribute: .Height, relatedBy: .Equal, toItem: nil, attribute: .Height, multiplier: 1.0, constant: swipeImageSize),
+      NSLayoutConstraint.init(item: swipeImageView, attribute: .Width, relatedBy: .Equal, toItem: nil, attribute: .Width, multiplier: 1.0, constant: swipeImageSize)
+      ])
     
     addConstraints([
-      NSLayoutConstraint.init(item: swipeImageView,
-        attribute: .CenterX,
-        relatedBy: .Equal,
-        toItem: self,
-        attribute: .CenterX,
-        multiplier: 1.0,
-        constant: 0.0),
-      NSLayoutConstraint.init(item: swipeImageView,
-        attribute: .CenterY,
-        relatedBy: .Equal,
-        toItem: self,
-        attribute: .CenterY,
-        multiplier: 1.0,
-        constant: 0.0)
+      NSLayoutConstraint.init(item: swipeImageView, attribute: .CenterX, relatedBy: .Equal, toItem: self, attribute: .CenterX, multiplier: 1.0, constant: 0.0),
+      NSLayoutConstraint.init(item: swipeImageView, attribute: .CenterY, relatedBy: .Equal, toItem: self, attribute: .CenterY, multiplier: 1.0, constant: 0.0)
       ])
   }
   
