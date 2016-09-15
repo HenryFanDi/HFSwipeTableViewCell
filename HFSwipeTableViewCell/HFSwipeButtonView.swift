@@ -35,12 +35,7 @@ class HFSwipeButtonView: UIView {
   
   // MARK: Public
   
-  func setSwipeButtonsWithSingleWidth(swipeBtns: [HFSwipeButton], btnWidth: CGFloat) {
-    setupSwipeButtons(swipeBtns)
-    setupConstraints(btnWidth)
-  }
-  
-  func setSwipeButtonsWithMultipleWidth(swipeBtns: [HFSwipeButton], btnWidths: [CGFloat]) {
+  func setSwipeButtons(swipeBtns: [HFSwipeButton], btnWidths: [CGFloat]) {
     setupSwipeButtons(swipeBtns)
     setupConstraints(btnWidths)
   }
