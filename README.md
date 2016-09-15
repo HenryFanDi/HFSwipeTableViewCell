@@ -79,7 +79,7 @@ private func setupSwipeButtonWithSwipeButtonType() {
 	* `swipeImageSize: CGFloat` － Image size, setup if needed, default is 20.0.
 	* `btnBackgroundColor: UIColor` － Button background color.
 	* `imageNamed: String` － Image name.
-	* `addTarget: action: forControlEvents` － Implement its on tap event and pass event with delegate.
+	* `addTarget:action:forControlEvents` － Implement its on tap event and pass event with delegate.
 
 		```swift
 		func customBtnOnTap() {
