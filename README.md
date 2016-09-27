@@ -2,7 +2,7 @@
 
 SwipeTableViewCell with custom swipe button(s) and swipe button width(s).
 
-![alt tag](https://raw.githubusercontent.com/HenryFanDi/HFSwipeTableViewCell/develop/demo.gif)
+![alt tag](https://raw.githubusercontent.com/HenryFanDi/HFSwipeTableViewCell/develop/demo.gif =320x564)
 
 ## Usage
 
@@ -56,7 +56,7 @@ private func setupSwipeButtonWithSwipeButtonType() {
 	switch swipeButtonType {
 	case .CustomType:
 		swipeImageSize = 50.0
-		btnBackgroundColor = .lightGrayColor()
+		btnBackgroundColor = .init(red: 255.0/255.0, green: 198.0/255.0, blue: 26.0/255.0, alpha: 1.0)
 		imageNamed = "Custom"
 		addTarget(self, action: #selector(HFSwipeButton.customBtnOnTap), forControlEvents: .TouchUpInside)
 		break
