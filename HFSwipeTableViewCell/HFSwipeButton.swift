@@ -64,7 +64,7 @@ class HFSwipeButton: UIButton {
     var imageNamed = ""
     switch swipeButtonType {
     case .HFSwipeButtonDial:
-      btnBackgroundColor = .clearColor()
+      btnBackgroundColor = UIColor.init(red: 255.0/255.0, green: 198.0/255.0, blue: 26.0/255.0, alpha: 1.0)
       imageNamed = "Dial"
       addTarget(self, action: #selector(HFSwipeButton.dialBtnOnTap), forControlEvents: .TouchUpInside)
       break
