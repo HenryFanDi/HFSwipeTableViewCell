@@ -2,6 +2,8 @@
 
 SwipeTableViewCell with custom swipe button(s) and swipe button width(s).
 
+![alt tag](https://raw.githubusercontent.com/HenryFanDi/HFSwipeTableViewCell/develop/demo.gif)
+
 ## Usage
 
 Extend `HFSwipeTableViewCell`.
