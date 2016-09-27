@@ -81,7 +81,10 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
   // MARK: HFSwipeButtonDelegate
   
   func dialBtnOnTap() {
-    print("dialBtnOnTap")
+    let alertController = UIAlertController.init(title: "", message: "Swipe Button On Tap", preferredStyle: .Alert)
+    alertController.addAction(UIAlertAction.init(title: "OK", style: .Default, handler: { (alertAction) in
+    }))
+    presentViewController(alertController, animated: true) {}
   }
   
 }
