@@ -2,7 +2,7 @@
 
 SwipeTableViewCell with custom swipe button(s) and swipe button width(s).
 
-![alt tag](https://raw.githubusercontent.com/HenryFanDi/HFSwipeTableViewCell/develop/demo.gif =320x564)
+<img src="https://raw.githubusercontent.com/HenryFanDi/HFSwipeTableViewCell/develop/demo.gif" width="320" height="564">
 
 ## Usage
 
