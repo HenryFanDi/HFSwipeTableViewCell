@@ -27,7 +27,7 @@ class MainTableViewCell: HFSwipeTableViewCell {
   
   // MARK: Public
   
-  func configurationWithAvatar(avatar: Dictionary <String, AnyObject>) {
+  func configurationWithAvatar(_ avatar: Dictionary <String, AnyObject>) {
     avatarImageView.image = avatar["image"] as? UIImage
     titleLabel.text = avatar["title"] as? String
     subTitleLabel.text = avatar["subTitle"] as? String
@@ -35,26 +35,26 @@ class MainTableViewCell: HFSwipeTableViewCell {
   
   // MARK: Private
   
-  private func setupMainTableViewCell() {
+  fileprivate func setupMainTableViewCell() {
     setupAvatarImageView()
     setupTitleLabel()
     setupSubTitleLabel()
   }
   
-  private func setupAvatarImageView() {
-    avatarImageView.contentMode = .ScaleAspectFill
+  fileprivate func setupAvatarImageView() {
+    avatarImageView.contentMode = .scaleAspectFill
     avatarImageView.clipsToBounds = true
     avatarImageView.layer.borderWidth = 0.5
-    avatarImageView.layer.borderColor = UIColor.lightGrayColor().CGColor
-    avatarImageView.layer.cornerRadius = CGRectGetHeight(avatarImageView.frame) / 2.0
+    avatarImageView.layer.borderColor = UIColor.lightGray.cgColor
+    avatarImageView.layer.cornerRadius = avatarImageView.frame.height / 2.0
   }
   
-  private func setupTitleLabel() {
-    titleLabel.textColor = .blackColor()
+  fileprivate func setupTitleLabel() {
+    titleLabel.textColor = .black
   }
   
-  private func setupSubTitleLabel() {
-    subTitleLabel.textColor = .lightGrayColor()
+  fileprivate func setupSubTitleLabel() {
+    subTitleLabel.textColor = .lightGray
   }
   
 }

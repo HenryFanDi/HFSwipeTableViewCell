@@ -9,8 +9,8 @@
 import UIKit
 
 enum HFSwipeButtonType {
-  case HFSwipeButtonUnknown
-  case HFSwipeButtonDial
+  case hfSwipeButtonUnknown
+  case hfSwipeButtonDial
 }
 
 protocol HFSwipeButtonDelegate {
@@ -21,14 +21,14 @@ class HFSwipeButton: UIButton {
   
   var delegate: HFSwipeButtonDelegate?
 
-  private var swipeButtonType: HFSwipeButtonType
-  private let swipeImageView: UIImageView
-  private var swipeImageSize: CGFloat
+  fileprivate var swipeButtonType: HFSwipeButtonType
+  fileprivate let swipeImageView: UIImageView
+  fileprivate var swipeImageSize: CGFloat
   
   // MARK: Lifecycle
   
   convenience required init?(coder aDecoder: NSCoder) {
-    self.init(swipeButtonType: .HFSwipeButtonUnknown)
+    self.init(swipeButtonType: .hfSwipeButtonUnknown)
   }
   
   init(swipeButtonType: HFSwipeButtonType) {
@@ -36,37 +36,37 @@ class HFSwipeButton: UIButton {
     self.swipeButtonType = swipeButtonType
     self.swipeImageView = UIImageView()
     self.swipeImageSize = 0.0
-    super.init(frame: CGRectZero)
+    super.init(frame: CGRect.zero)
     setupButton()
   }
   
   // MARK: Private
   
-  private func setupButton() {
+  fileprivate func setupButton() {
     setupSwipeButton()
     setupSwipeImageView()
     setupSwipeButtonWithSwipeButtonType()
     setupSwipeButtonConstraints()
   }
   
-  private func setupSwipeButton() {
+  fileprivate func setupSwipeButton() {
     translatesAutoresizingMaskIntoConstraints = false
   }
   
-  private func setupSwipeImageView() {
+  fileprivate func setupSwipeImageView() {
     swipeImageSize = 20.0
     swipeImageView.translatesAutoresizingMaskIntoConstraints = false
     addSubview(swipeImageView)
   }
   
-  private func setupSwipeButtonWithSwipeButtonType() {
-    var btnBackgroundColor = .whiteColor() as UIColor
+  fileprivate func setupSwipeButtonWithSwipeButtonType() {
+    var btnBackgroundColor = .white as UIColor
     var imageNamed = ""
     switch swipeButtonType {
-    case .HFSwipeButtonDial:
+    case .hfSwipeButtonDial:
       btnBackgroundColor = .init(red: 255.0/255.0, green: 198.0/255.0, blue: 26.0/255.0, alpha: 1.0)
       imageNamed = "Dial"
-      addTarget(self, action: #selector(HFSwipeButton.dialBtnOnTap), forControlEvents: .TouchUpInside)
+      addTarget(self, action: #selector(HFSwipeButton.dialBtnOnTap), for: .touchUpInside)
       break
     default:
       break
@@ -75,15 +75,15 @@ class HFSwipeButton: UIButton {
     swipeImageView.image = UIImage.init(named: imageNamed)
   }
   
-  private func setupSwipeButtonConstraints() {
+  fileprivate func setupSwipeButtonConstraints() {
     swipeImageView.addConstraints([
-      NSLayoutConstraint.init(item: swipeImageView, attribute: .Height, relatedBy: .Equal, toItem: nil, attribute: .Height, multiplier: 1.0, constant: swipeImageSize),
-      NSLayoutConstraint.init(item: swipeImageView, attribute: .Width, relatedBy: .Equal, toItem: nil, attribute: .Width, multiplier: 1.0, constant: swipeImageSize)
+      NSLayoutConstraint.init(item: swipeImageView, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .height, multiplier: 1.0, constant: swipeImageSize),
+      NSLayoutConstraint.init(item: swipeImageView, attribute: .width, relatedBy: .equal, toItem: nil, attribute: .width, multiplier: 1.0, constant: swipeImageSize)
       ])
     
     addConstraints([
-      NSLayoutConstraint.init(item: swipeImageView, attribute: .CenterX, relatedBy: .Equal, toItem: self, attribute: .CenterX, multiplier: 1.0, constant: 0.0),
-      NSLayoutConstraint.init(item: swipeImageView, attribute: .CenterY, relatedBy: .Equal, toItem: self, attribute: .CenterY, multiplier: 1.0, constant: 0.0)
+      NSLayoutConstraint.init(item: swipeImageView, attribute: .centerX, relatedBy: .equal, toItem: self, attribute: .centerX, multiplier: 1.0, constant: 0.0),
+      NSLayoutConstraint.init(item: swipeImageView, attribute: .centerY, relatedBy: .equal, toItem: self, attribute: .centerY, multiplier: 1.0, constant: 0.0)
       ])
   }
   

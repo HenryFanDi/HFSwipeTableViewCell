@@ -9,7 +9,7 @@
 import UIKit
 
 extension UIView {
-  func parentViewOfType<T>(type: T.Type) -> T? {
+  func parentViewOfType<T>(_ type: T.Type) -> T? {
     var currentView = self
     while currentView.superview != nil {
       if currentView is T {
@@ -24,23 +24,23 @@ extension UIView {
 class HFSwipeTableViewCell: UITableViewCell, UIScrollViewDelegate {
   
   enum HFSwipeStatusType {
-    case HFSwipeStatusCenter
-    case HFSwipeStatusLeft
-    case HFSwipeStatusRight
+    case hfSwipeStatusCenter
+    case hfSwipeStatusLeft
+    case hfSwipeStatusRight
   }
   
-  private var isOpened = Bool()
-  private var tableView: UITableView?
+  fileprivate var isOpened = Bool()
+  fileprivate var tableView: UITableView?
   
-  private let cellScrollView = UIScrollView()
-  private let cellContentView = UIView()
+  fileprivate let cellScrollView = UIScrollView()
+  fileprivate let cellContentView = UIView()
   
-  private let tapGestureRecognizer = UITapGestureRecognizer()
+  fileprivate let tapGestureRecognizer = UITapGestureRecognizer()
   
-  private let rightView = UIView()
-  private var rightViewConstraint = NSLayoutConstraint()
+  fileprivate let rightView = UIView()
+  fileprivate var rightViewConstraint = NSLayoutConstraint()
   
-  private let rightSwipeBtnView = HFSwipeButtonView()
+  fileprivate let rightSwipeBtnView = HFSwipeButtonView()
   
   // MARK: Lifecycle
   
@@ -54,30 +54,30 @@ class HFSwipeTableViewCell: UITableViewCell, UIScrollViewDelegate {
     
     cellContentView.frame = contentView.frame
     
-    let rightSwipeBtnViewWidth: CGFloat = CGRectGetWidth(rightSwipeBtnView.frame)
-    cellScrollView.contentSize = CGSizeMake(CGRectGetWidth(contentView.frame) + rightSwipeBtnViewWidth, CGRectGetHeight(contentView.frame))
-    if !cellScrollView.tracking && !cellScrollView.decelerating {
-      cellScrollView.contentOffset = CGPointMake(0.0, 0.0)
+    let rightSwipeBtnViewWidth: CGFloat = rightSwipeBtnView.frame.width
+    cellScrollView.contentSize = CGSize(width: contentView.frame.width + rightSwipeBtnViewWidth, height: contentView.frame.height)
+    if !cellScrollView.isTracking && !cellScrollView.isDecelerating {
+      cellScrollView.contentOffset = CGPoint(x: 0.0, y: 0.0)
     }
   }
   
   override func didMoveToSuperview() {
-    tableView = parentViewOfType(UITableView)
+    tableView = parentViewOfType(UITableView.self)
   }
   
-  override func setSelected(selected: Bool, animated: Bool) {
+  override func setSelected(_ selected: Bool, animated: Bool) {
     super.setSelected(selected, animated: animated)
   }
   
   // MARK: Public
   
-  func setRightSwipeButtons(rightSwipeBtns: [HFSwipeButton], btnWidths: [CGFloat]) {
+  func setRightSwipeButtons(_ rightSwipeBtns: [HFSwipeButton], btnWidths: [CGFloat]) {
     rightSwipeBtnView.setSwipeButtons(rightSwipeBtns, btnWidths: btnWidths)
   }
   
   // MARK: Private
   
-  private func setupSwipeTableViewCell() {
+  fileprivate func setupSwipeTableViewCell() {
     setupCellScrollView()
     setupCellContentView()
     
@@ -90,62 +90,62 @@ class HFSwipeTableViewCell: UITableViewCell, UIScrollViewDelegate {
     setupSwipeViewsConstraints()
   }
   
-  private func setupCellScrollView() {
-    cellScrollView.backgroundColor = .clearColor()
+  fileprivate func setupCellScrollView() {
+    cellScrollView.backgroundColor = .clear
     cellScrollView.translatesAutoresizingMaskIntoConstraints = false
     cellScrollView.delegate = self
     cellScrollView.showsHorizontalScrollIndicator = false
-    cellScrollView.scrollEnabled = true
+    cellScrollView.isScrollEnabled = true
   }
   
-  private func setupCellContentView() {
-    cellContentView.backgroundColor = .clearColor()
+  fileprivate func setupCellContentView() {
+    cellContentView.backgroundColor = .clear
     cellScrollView.addSubview(cellContentView)
     
     // Add the cell scroll view to the cell
     let cellSubviews = subviews
-    insertSubview(cellScrollView, atIndex: 0)
-    for (_, cellSubview) in cellSubviews.enumerate() {
+    insertSubview(cellScrollView, at: 0)
+    for (_, cellSubview) in cellSubviews.enumerated() {
       cellContentView.addSubview(cellSubview)
     }
   }
   
-  private func setupTapGestureRecognizer() {
+  fileprivate func setupTapGestureRecognizer() {
     tapGestureRecognizer.addTarget(self, action: #selector(HFSwipeTableViewCell.selectOnTap(_:)))
     tapGestureRecognizer.delegate = self
     cellScrollView.addGestureRecognizer(tapGestureRecognizer)
   }
   
-  private func setupCellViewsConstraints() {
+  fileprivate func setupCellViewsConstraints() {
     let metrics = ["padding": 0.0]
     let views = ["cellScrollView": cellScrollView]
-    let horizontalConstraints = NSLayoutConstraint.constraintsWithVisualFormat("H:|-padding-[cellScrollView]-padding-|", options: [.AlignAllBaseline], metrics: metrics, views: views)
-    let verticalConstraints = NSLayoutConstraint.constraintsWithVisualFormat("V:|-padding-[cellScrollView]-padding-|", options: [.AlignAllBaseline], metrics: metrics, views: views)
+    let horizontalConstraints = NSLayoutConstraint.constraints(withVisualFormat: "H:|-padding-[cellScrollView]-padding-|", options: [.alignAllLastBaseline], metrics: metrics, views: views)
+    let verticalConstraints = NSLayoutConstraint.constraints(withVisualFormat: "V:|-padding-[cellScrollView]-padding-|", options: [.alignAllLastBaseline], metrics: metrics, views: views)
     addConstraints(horizontalConstraints)
     addConstraints(verticalConstraints)
   }
   
-  private func setupSwipeViews() {
+  fileprivate func setupSwipeViews() {
     rightView.frame = self.bounds
-    rightView.backgroundColor = .clearColor()
+    rightView.backgroundColor = .clear
     
     rightViewConstraint = NSLayoutConstraint.init(item: rightView,
-                                                  attribute: .Left,
-                                                  relatedBy: .Equal,
+                                                  attribute: .left,
+                                                  relatedBy: .equal,
                                                   toItem: self,
-                                                  attribute: .Right,
+                                                  attribute: .right,
                                                   multiplier: 1.0,
                                                   constant: 0.0)
   }
   
-  private func setupSwipeBtnViews() {
+  fileprivate func setupSwipeBtnViews() {
   }
   
-  private func setupSwipeViewsConstraints() {
+  fileprivate func setupSwipeViewsConstraints() {
     let swipeViews = [rightView]
     let swipeViewConstraints = [rightViewConstraint]
     let swipeBtnViews = [rightSwipeBtnView]
-    let swipeAttributes = [NSLayoutAttribute.Right]
+    let swipeAttributes = [NSLayoutAttribute.right]
     
     let swipeCounts = 1
     for index in 0...swipeCounts - 1 {
@@ -160,73 +160,73 @@ class HFSwipeTableViewCell: UITableViewCell, UIScrollViewDelegate {
       let swipeBtnView = swipeBtnViews[index]
       let swipeAttribute = swipeAttributes[index]
       addConstraints([
-        NSLayoutConstraint.init(item: swipeView, attribute: .Top, relatedBy: .Equal, toItem: self, attribute: .Top, multiplier: 1.0, constant: 0.0),
-        NSLayoutConstraint.init(item: swipeView, attribute: .Bottom, relatedBy: .Equal, toItem: self, attribute: .Bottom, multiplier: 1.0, constant: 0.0),
-        NSLayoutConstraint.init(item: swipeView, attribute: swipeAttribute, relatedBy: .Equal, toItem: self, attribute: swipeAttribute, multiplier: 1.0, constant: 0.0),
+        NSLayoutConstraint.init(item: swipeView, attribute: .top, relatedBy: .equal, toItem: self, attribute: .top, multiplier: 1.0, constant: 0.0),
+        NSLayoutConstraint.init(item: swipeView, attribute: .bottom, relatedBy: .equal, toItem: self, attribute: .bottom, multiplier: 1.0, constant: 0.0),
+        NSLayoutConstraint.init(item: swipeView, attribute: swipeAttribute, relatedBy: .equal, toItem: self, attribute: swipeAttribute, multiplier: 1.0, constant: 0.0),
         swipeViewConstraint
         ])
       
       swipeView.addSubview(swipeBtnView)
       swipeView.addConstraints([
-        NSLayoutConstraint.init(item: swipeBtnView, attribute: .Top, relatedBy: .Equal, toItem: swipeView, attribute: .Top, multiplier: 1.0, constant: 0.0),
-        NSLayoutConstraint.init(item: swipeBtnView, attribute: .Bottom, relatedBy: .Equal, toItem: swipeView, attribute: .Bottom, multiplier: 1.0, constant: 0.0),
-        NSLayoutConstraint.init(item: swipeBtnView, attribute: swipeAttribute, relatedBy: .Equal, toItem: swipeView, attribute: swipeAttribute, multiplier: 1.0, constant: 0.0)
+        NSLayoutConstraint.init(item: swipeBtnView, attribute: .top, relatedBy: .equal, toItem: swipeView, attribute: .top, multiplier: 1.0, constant: 0.0),
+        NSLayoutConstraint.init(item: swipeBtnView, attribute: .bottom, relatedBy: .equal, toItem: swipeView, attribute: .bottom, multiplier: 1.0, constant: 0.0),
+        NSLayoutConstraint.init(item: swipeBtnView, attribute: swipeAttribute, relatedBy: .equal, toItem: swipeView, attribute: swipeAttribute, multiplier: 1.0, constant: 0.0)
         ])
       
       addConstraints([
-        NSLayoutConstraint.init(item: swipeBtnView, attribute: .Width, relatedBy: .LessThanOrEqual, toItem: self, attribute: .Width, multiplier: 1.0, constant: 90.0)
+        NSLayoutConstraint.init(item: swipeBtnView, attribute: .width, relatedBy: .lessThanOrEqual, toItem: self, attribute: .width, multiplier: 1.0, constant: 90.0)
         ])
     }
   }
   
-  private func updateSwipeCell(swipeStatusType: HFSwipeStatusType, scrollView: UIScrollView) {
-    if swipeStatusType == .HFSwipeStatusRight {
+  fileprivate func updateSwipeCell(_ swipeStatusType: HFSwipeStatusType, scrollView: UIScrollView) {
+    if swipeStatusType == .hfSwipeStatusRight {
       if scrollView.contentOffset.x >= 0.0 {
-        var frame = self.contentView.superview?.convertRect(self.contentView.frame, toView: self)
-        frame?.size.width = CGRectGetWidth(self.frame)
+        var frame = self.contentView.superview?.convert(self.contentView.frame, to: self)
+        frame?.size.width = self.frame.width
         
-        rightViewConstraint.constant = min(0, CGRectGetMaxX(frame!) - CGRectGetMaxX(self.frame))
+        rightViewConstraint.constant = min(0, frame!.maxX - self.frame.maxX)
       } else {
-        scrollView.setContentOffset(CGPointZero, animated: false)
+        scrollView.setContentOffset(CGPoint.zero, animated: false)
       }
     }
   }
   
   // MARK: UITapGestureRecognizer
   
-  func selectOnTap(tapGestureRecognizer: UITapGestureRecognizer) {
+  func selectOnTap(_ tapGestureRecognizer: UITapGestureRecognizer) {
   }
   
   // MARK: UIScrollViewDelegate
   
-  func scrollViewDidScroll(scrollView: UIScrollView) {
-    updateSwipeCell(.HFSwipeStatusRight, scrollView: scrollView)
+  func scrollViewDidScroll(_ scrollView: UIScrollView) {
+    updateSwipeCell(.hfSwipeStatusRight, scrollView: scrollView)
   }
   
-  func scrollViewWillBeginDragging(scrollView: UIScrollView) {
+  func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
     hideVisibleCells()
   }
   
-  func scrollViewWillEndDragging(scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
-    let rightThreshold: CGFloat = CGRectGetWidth(rightSwipeBtnView.frame) / 2.0
-    if targetContentOffset.memory.x > rightThreshold {
+  func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
+    let rightThreshold: CGFloat = rightSwipeBtnView.frame.width / 2.0
+    if targetContentOffset.pointee.x > rightThreshold {
       isOpened = true
-      targetContentOffset.memory = scrollViewContentOffsetWithSwipeStatusType(.HFSwipeStatusRight)
+      targetContentOffset.pointee = scrollViewContentOffsetWithSwipeStatusType(.hfSwipeStatusRight)
     } else {
       isOpened = false
-      targetContentOffset.memory = CGPointZero
+      targetContentOffset.pointee = CGPoint.zero
     }
   }
   
   // MARK: HFSwipeStatusType
   
-  private func scrollViewContentOffsetWithSwipeStatusType(swipeStatusType: HFSwipeStatusType) -> CGPoint {
-    var scrollPoint = CGPointZero
+  fileprivate func scrollViewContentOffsetWithSwipeStatusType(_ swipeStatusType: HFSwipeStatusType) -> CGPoint {
+    var scrollPoint = CGPoint.zero
     switch swipeStatusType {
-    case .HFSwipeStatusCenter, .HFSwipeStatusLeft:
+    case .hfSwipeStatusCenter, .hfSwipeStatusLeft:
       break
-    case .HFSwipeStatusRight:
-      scrollPoint.x = CGRectGetWidth(rightSwipeBtnView.frame)
+    case .hfSwipeStatusRight:
+      scrollPoint.x = rightSwipeBtnView.frame.width
       break
     }
     return scrollPoint
@@ -234,10 +234,10 @@ class HFSwipeTableViewCell: UITableViewCell, UIScrollViewDelegate {
   
   // MARK: Hide Visible
   
-  private func hideVisibleCells() {
+  fileprivate func hideVisibleCells() {
     if tableView != nil {
       for cell in tableView!.visibleCells {
-        if cell.isKindOfClass(HFSwipeTableViewCell) {
+        if cell.isKind(of: HFSwipeTableViewCell.self) {
           if (cell as! HFSwipeTableViewCell).isOpened && cell != self {
             hideCell((cell as! HFSwipeTableViewCell))
           }
@@ -246,9 +246,9 @@ class HFSwipeTableViewCell: UITableViewCell, UIScrollViewDelegate {
     }
   }
   
-  private func hideCell(cell: HFSwipeTableViewCell) {
+  fileprivate func hideCell(_ cell: HFSwipeTableViewCell) {
     cell.isOpened = false
-    cell.cellScrollView.setContentOffset(CGPointZero, animated: true)
+    cell.cellScrollView.setContentOffset(CGPoint.zero, animated: true)
   }
   
 }
